@@ -13,7 +13,7 @@ float distance(float ax, float ay, float bx, float by, float angle);
 
 float player_x, player_y, player_deltax, player_deltay, player_angle;
 float player_size = 8.0f;
-float speed = 0.01f;
+float speed = 10;
 
 int map_x = 8, map_y = 8, map_size = 64;
 int map[] =
@@ -28,11 +28,36 @@ int map[] =
 	1,1,1,1,1,1,1,1
 };
 
+float deltaTime;
+
+float windowHeight = 1024.0f;
+float windowWidth = 512.0f;
+
+float cinematic = (windowWidth - 320.0) / 2.0 + 10;
+
 int main() {
-	float windowHeight = 1024.0f;
-	float windowWidth = 512.0f;
+	
 
 	sf::RenderWindow window(sf::VideoMode(windowHeight, windowWidth), "Raycaster");
+	sf::Clock clock;
+	sf::Time const timestep = sf::milliseconds(50);
+	sf::Time elapsed_dt;
+
+	sf::RectangleShape ceiling(sf::Vector2f(windowHeight/2 - 32, windowWidth/2));
+	sf::RectangleShape floor(sf::Vector2f(windowHeight / 2 - 32, windowWidth / 2));
+	ceiling.setPosition(sf::Vector2f(windowHeight/2 + 18, 0));
+	floor.setPosition(sf::Vector2f(windowHeight/2 + 18, windowWidth/2));
+	ceiling.setFillColor(sf::Color::Red);
+	floor.setFillColor(sf::Color::Blue);
+
+	sf::RectangleShape cinematicBar1(sf::Vector2f(windowHeight / 2 - 32, cinematic));
+	sf::RectangleShape cinematicBar2(sf::Vector2f(windowHeight / 2 - 32, cinematic));
+	cinematicBar1.setPosition(sf::Vector2f(windowHeight / 2 + 18, 0));
+	cinematicBar2.setPosition(sf::Vector2f(windowHeight / 2 + 18, windowWidth - cinematic));
+	cinematicBar1.setFillColor(sf::Color::Black);
+	cinematicBar2.setFillColor(sf::Color::Black);
+
+	clock.restart();
 
 	player_size = 8;
 	player_x = player_y = 300;
@@ -40,6 +65,19 @@ int main() {
 	player_deltay = sin(player_angle) * 5;
 
 	while (window.isOpen()) {
+		sf::Time dt;
+
+		// deltatime calculations
+		dt = clock.restart();
+		elapsed_dt += dt;
+
+		deltaTime = dt.asSeconds();
+
+		if (elapsed_dt >= timestep) {
+			double floatFixedDT = elapsed_dt.asSeconds();
+			elapsed_dt -= timestep;
+		}
+
 		sf::Event event;
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {
@@ -50,9 +88,13 @@ int main() {
 		checkKeyboardInput();
 
 		window.clear(sf::Color::Color(80, 80, 80, 255));
+		window.draw(ceiling);
+		window.draw(floor);
 		drawMap2D(&window);
 		displayPlayer(&window);
 		drawRays2D(&window);
+		window.draw(cinematicBar1);
+		window.draw(cinematicBar2);
 		window.display();
 	}
 	
@@ -73,7 +115,7 @@ void displayPlayer(sf::RenderWindow *win) {
 
 void checkKeyboardInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) { 
-		player_angle -= 0.1f*speed; 
+		player_angle -= 0.1f*speed*deltaTime; 
 		if (player_angle < 0) { 
 			player_angle += 2 * PI; 
 		} 
@@ -81,7 +123,7 @@ void checkKeyboardInput() {
 		player_deltay = sin(player_angle) * 5;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) { 
-		player_angle += 0.1f*speed;
+		player_angle += 0.1f*speed* deltaTime;
 		if (player_angle > 2*PI) {
 			player_angle -= 2*PI;
 		}
@@ -89,12 +131,12 @@ void checkKeyboardInput() {
 		player_deltay = sin(player_angle) * 5;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) { 
-		player_x += player_deltax*speed;
-		player_y += player_deltay*speed;
+		player_x += player_deltax*speed* deltaTime;
+		player_y += player_deltay*speed* deltaTime;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) { 
-		player_x -= player_deltax*speed;
-		player_y -= player_deltay*speed;
+		player_x -= player_deltax*speed* deltaTime;
+		player_y -= player_deltay*speed* deltaTime;
 	}
 }
 
@@ -244,7 +286,7 @@ void drawRays2D(sf::RenderWindow* win) {
 			lineH = 320;
 		}
 
-		float lineOffset = 160 - lineH / 2;
+		float lineOffset = (160 - lineH / 2) + 100;
 		sf::RectangleShape line3d(sf::Vector2f(8, lineH));
 		line3d.setPosition(sf::Vector2f(ray * 8 + 530, lineOffset));
 		line3d.setFillColor(wallColor);
@@ -263,3 +305,4 @@ void drawRays2D(sf::RenderWindow* win) {
 float distance(float ax, float ay, float bx, float by, float angle) {
 	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }
+

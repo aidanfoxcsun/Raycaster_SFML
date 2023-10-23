@@ -1,0 +1,37 @@
+﻿  Main.cpp
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(37,54): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(37,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(80,26): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(88,24): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(116,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(116,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(117,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(117,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(128,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(130,22): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(133,22): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(138,14): warning C4305: 'initializing': truncation from 'int' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(142,40): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(148,40): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(179,14): warning C4305: 'initializing': truncation from 'int' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(183,40): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(189,40): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(237,16): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(240,16): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(251,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(255,28): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(257,23): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Main.cpp(260,23): warning C4305: '-=': truncation from 'double' to 'float'
+  FirstProject.vcxproj -> C:\Users\Garage\Desktop\dev\SFML Projects\FirstProject\Debug\FirstProject.exe
